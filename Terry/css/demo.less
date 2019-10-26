@@ -20,16 +20,17 @@ body::-webkit-scrollbar {
   background: url("../images/bg_sea.png") repeat-x;
   background-size: 100% 100%;
   //padding: 10% 15%;
-  padding: 10% 15% 20%;
+  padding: 10% 20% 20%;
   #contentBox {
+    //-webkit-transform: scale3d(-1,1, 1) rotate(90deg);/*旋转后*/
     height: 100%;
     //background-color: pink;
     position: relative;
 
     #eaterIcon {
       position: absolute;
-      width: 299/@rem/8;
-      height: 262/@rem/8;
+      //width: 299/@rem/8;
+      //height: 262/@rem/8;
       left: -899/@rem/8/2;
       top: -262/@rem/8/2;
       z-index: 2;
@@ -54,6 +55,7 @@ body::-webkit-scrollbar {
       }
 
       .foodIcon {
+        //-webkit-transform: scale(1,2);/*旋转后*/
         width: @foodIconLength/@rem;
         height: @foodIconLength/@rem;
         position: absolute;
@@ -102,10 +104,12 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    .leftTime {
+    .timeNum {
       font-weight: bold;
       color: #fff;
       font-size: 4rem;
+      display: inline-block;
+      padding-bottom: 100/@rem;
     }
   }
 

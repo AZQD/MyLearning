@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
   height: 100vh;
   background: url("../images/bg_sea.png") repeat-x;
   background-size: 100% 100%;
-  padding: 10% 15% 20%;
+  padding: 10% 20% 20%;
 }
 .index-wrapper #contentBox {
   height: 100%;
@@ -21,8 +21,6 @@ body::-webkit-scrollbar {
 }
 .index-wrapper #contentBox #eaterIcon {
   position: absolute;
-  width: 0.99666667rem;
-  height: 0.87333333rem;
   left: -1.49833333rem;
   top: -0.43666667rem;
   z-index: 2;
@@ -80,10 +78,12 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
 }
-.index-wrapper .shadowBox .leftTime {
+.index-wrapper .shadowBox .timeNum {
   font-weight: bold;
   color: #fff;
   font-size: 4rem;
+  display: inline-block;
+  padding-bottom: 2.66666667rem;
 }
 .index-wrapper .fixedBox {
   position: fixed;
