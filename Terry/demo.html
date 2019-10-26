@@ -28,23 +28,29 @@
 <script type="text/javascript">
 
   $(function(){
-    console.log(Math.sqrt( Math.pow(200,2)+Math.pow(100,2) )); // 斜线高度
 
+    // 斜线高度
+    console.log(Math.sqrt( Math.pow(200,2)+Math.pow(100,2) ));
+
+    /**
+     * js控制角度
+     * @param tan
+     * @returns {number}
+     */
     function getTanDeg(tan) {
       return Math.atan(tan) / (Math.PI / 180);
     }
-    var result = getTanDeg(2);
-    console.log(result); // js控制角度
 
 
     let point = 10; // 一共10个目标点
-    let lineColor = '#bfa';
-    let lineWidth = 1;
+    let lineColor = '#bfa'; // 线条颜色
+    let lineWidth = 2; // 线条粗细
 
-    let $contentBox = $('#contentBox');
-    let itemWidth = $contentBox.width();
-    let itemHeight = $contentBox.height()/(point/2 - 1);
+    let $contentBox = $('#contentBox'); // 容器box
+    let itemWidth = $contentBox.width(); // 子元素宽度
+    let itemHeight = $contentBox.height()/(point/2 - 1); // 子元素高度
 
+    // 添加子元素，并定义样式
     for(let i = 0; i<point/2 - 1; i++){
       $contentBox.append('<div class="partItem"></div>');
       $('.partItem').eq(i)
@@ -53,10 +59,12 @@
         'borderTop': `${lineWidth}px solid ${lineColor}`
       });
     }
+    // 最后一个元素不要边框
     $('.partItem:last-child').css({
       'borderBottom': `${lineWidth}px solid ${lineColor}`
     });
 
+    // 子元素，添加伪类样式
     $(`<style>.partItem:before{
       width: ${lineWidth}px;
       height: ${Math.sqrt( Math.pow(itemWidth,2)+Math.pow(itemHeight,2) )}px;
