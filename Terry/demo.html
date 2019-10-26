@@ -15,6 +15,7 @@
 	<div class="index-wrapper">
 
         <div id="contentBox">
+          <img id="eaterIcon" src="./images/fish_right.png" alt="eaterIcon">
           <!--<div class="partItem"></div>-->
         </div>
 
@@ -45,33 +46,80 @@
     let point = 10; // 一共10个目标点
     let lineColor = '#bfa'; // 线条颜色
     let lineWidth = 2; // 线条粗细
+    let animatEasing = 500; // 动画速度
+    let animatDelay = 200; // 动画每个阶段停留时间
 
     let $contentBox = $('#contentBox'); // 容器box
     let itemWidth = $contentBox.width(); // 子元素宽度
     let itemHeight = $contentBox.height()/(point/2 - 1); // 子元素高度
 
-    // 添加子元素，并定义样式
-    for(let i = 0; i<point/2 - 1; i++){
-      $contentBox.append('<div class="partItem"></div>');
-      $('.partItem').eq(i)
-        .width(itemWidth)
-        .height(itemHeight).css({
-        'borderTop': `${lineWidth}px solid ${lineColor}`
-      });
-    }
-    // 最后一个元素不要边框
-    $('.partItem:last-child').css({
-      'borderBottom': `${lineWidth}px solid ${lineColor}`
+    // 补充顶部边框，作为运动轨迹
+    $contentBox.css({
+      'borderTop': `${lineWidth}px solid ${lineColor}`
     });
 
-    // 子元素，添加伪类样式
+    // 添加子元素，添加子元素图片
+    for(let i = 0; i<point/2 - 1; i++){
+      $contentBox.append('<div class="partItem"></div>');
+      $('.partItem').eq(i).width(itemWidth).height(itemHeight).append('' +
+        '<div class="border" style="height: '+lineWidth+'px; background: '+lineColor+'"></div>' +
+        '<img class="foodIcon foodIcon1" src="./images/lemon.png" alt="foodIcon">' +
+        '<img class="foodIcon foodIcon2" src="./images/lemon.png" alt="foodIcon">'
+      );
+    }
+
+    // 最后一个元素添加子元素图片
+    $('.partItem:last-child').append('' +
+      '<img class="foodIcon foodIcon3" src="./images/lemon.png" alt="foodIcon">' +
+      '<img class="foodIcon foodIcon4" src="./images/lemon.png" alt="foodIcon">'
+    );
+
+    // 子元素，添加伪类样式，作为运动轨迹
     $(`<style>.partItem:before{
       width: ${lineWidth}px;
       height: ${Math.sqrt( Math.pow(itemWidth,2)+Math.pow(itemHeight,2) )}px;
       background-color: ${lineColor};
-      transform: rotate(${getTanDeg(itemWidth/(itemHeight - lineWidth))+'deg'});
+      transform: rotate(${getTanDeg(itemWidth/(itemHeight - lineWidth/2))+'deg'});
 
     }</style>`).appendTo('head');
+
+
+
+    var $foodIconArr = $('.foodIcon');// 食物的图标数组
+    var $eater = $('#eaterIcon'); // 猎人（人或者鱼）
+
+    let eaterWidth = $eater.width(); // 捕食者宽度
+    let eaterHeight = $eater.height(); // 捕食者高度
+
+
+    $eater.unbind('click').bind('click', function(){
+      eatingFood();
+    });
+
+    /**
+     * eatingFood：开始吃食物
+     */
+    function eatingFood(){
+      for(let i = 0; i<=point; i++){
+
+        let left = i%2?0:itemWidth; // 距离左侧距离
+        let top = Math.ceil(i/2)*itemHeight; // 距离顶部距离
+
+        if(i === 0){// 隐藏第一个食物
+          $foodIconArr.eq(0).hide();
+        }
+        if(i<point - 1){ // 最后一次之前停止动画
+          $eater.animate({
+            left: left - eaterWidth/2, // 减去自身边距的一半
+            top: top  - eaterHeight/2 // 减去自身边距的一半
+          }, animatEasing, 'linear', function(){
+            console.log(left, top);
+            $foodIconArr.eq(i+1).hide();
+            $eater.attr('src', `./images/fish_${i%2?'right':'left'}.png`);
+          }).delay(animatDelay);
+        }
+      }
+    }
 
   });
 

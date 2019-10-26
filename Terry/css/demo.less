@@ -11,16 +11,29 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
+@foodIconLength: 12; // 食物的图标大小
+
 .index-wrapper{
   height: 100vh;
-  //background: url("../images/bg_sea.png") repeat-x;
+  background: url("../images/bg_sea.png") repeat-x;
   background-size: 100% 100%;
   padding: 10% 15%;
   #contentBox{
     height: 100%;
-    background-color: pink;
+    //background-color: pink;
+    position: relative;
+
+    #eaterIcon{
+      position: absolute;
+      width:299/@rem/16;
+      height: 262/@rem/16;
+      left: -899/@rem/16/2;
+      top: -262/@rem/16/2;
+      z-index: 2;
+    }
+
     .partItem {
-      overflow: hidden;
+      //overflow: hidden;/*不需要*/
       //border-top: solid 1px #000;
       //width: 200px;
       //height: 100px;
@@ -28,6 +41,36 @@ body::-webkit-scrollbar {
       background-color: transparent;
       &:last-child{
         //border-bottom: solid 1px #000;
+      }
+
+      .border{/*作为运动轨迹*/
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .foodIcon{
+        width: @foodIconLength/@rem;
+        height: @foodIconLength/@rem;
+        position: absolute;
+        z-index: 1;
+      }
+      .foodIcon1{
+        left: -(@foodIconLength/2)/@rem;
+        top: -(@foodIconLength/2)/@rem;
+      }
+      .foodIcon2{
+        right: -(@foodIconLength/2)/@rem;
+        top: -(@foodIconLength/2)/@rem;
+      }
+      .foodIcon3{
+        left: -(@foodIconLength/2)/@rem;
+        bottom: -(@foodIconLength/2)/@rem;
+      }
+      .foodIcon4{
+        right: -(@foodIconLength/2)/@rem;
+        bottom: -(@foodIconLength/2)/@rem;
       }
     }
 
