@@ -2,31 +2,33 @@
 * {
   font-family: "微软雅黑" !important;
 }
+
 body {
   background-color: #fff;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
 }
+
 body::-webkit-scrollbar {
   width: 0;
 }
 
 @foodIconLength: 24; // 食物的图标大小
 
-.index-wrapper{
+.index-wrapper {
   height: 100vh;
   background: url("../images/bg_sea.png") repeat-x;
   background-size: 100% 100%;
   //padding: 10% 15%;
   padding: 16%;
-  #contentBox{
+  #contentBox {
     height: 100%;
     //background-color: pink;
     position: relative;
 
-    #eaterIcon{
+    #eaterIcon {
       position: absolute;
-      width:299/@rem/8;
+      width: 299/@rem/8;
       height: 262/@rem/8;
       left: -899/@rem/8/2;
       top: -262/@rem/8/2;
@@ -40,42 +42,42 @@ body::-webkit-scrollbar {
       //height: 100px;
       position: relative;
       background-color: transparent;
-      &:last-child{
+      &:last-child {
         //border-bottom: solid 1px #000;
       }
 
-      .border{/*作为运动轨迹*/
+      .border { /*作为运动轨迹*/
         position: absolute;
         left: 0;
         bottom: 0;
         width: 100%;
       }
 
-      .foodIcon{
+      .foodIcon {
         width: @foodIconLength/@rem;
         height: @foodIconLength/@rem;
         position: absolute;
         z-index: 1;
       }
-      .foodIcon1{
+      .foodIcon1 {
         left: -(@foodIconLength/2)/@rem;
         top: -(@foodIconLength/2)/@rem;
       }
-      .foodIcon2{
+      .foodIcon2 {
         right: -(@foodIconLength/2)/@rem;
         top: -(@foodIconLength/2)/@rem;
       }
-      .foodIcon3{
+      .foodIcon3 {
         left: -(@foodIconLength/2)/@rem;
         bottom: -(@foodIconLength/2)/@rem;
       }
-      .foodIcon4{
+      .foodIcon4 {
         right: -(@foodIconLength/2)/@rem;
         bottom: -(@foodIconLength/2)/@rem;
       }
     }
 
-    .partItem:before{
+    .partItem:before {
       content: "";
       position: absolute;
       //width: 1px;
@@ -89,18 +91,18 @@ body::-webkit-scrollbar {
     }
   }
 
-  .shadowBox{
+  .shadowBox {
     position: fixed;
     left: 0;
     top: 0;
     z-index: 3;
     width: 100%;
     height: 100%;
-    background-color: RGBA(0,0,0, 0.5);
+    background-color: RGBA(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
-    .leftTime{
+    .leftTime {
       font-weight: bold;
       color: #fff;
       font-size: 4rem;
@@ -122,7 +124,7 @@ body::-webkit-scrollbar {
       flex-grow: 1;
       margin: 12/@rem 0;
       border-right: 1/@rem solid #fff;
-      &:last-child{
+      &:last-child {
         border-right: none;
       }
     }

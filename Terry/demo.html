@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-   	<meta name="keywords" content="具体的关键字">
-	<meta name="description" content="具体的页面描述">
-	<meta name="author" content="game">
-	<meta http-equiv="content-language" content="zh-CN"/>
-	<meta charset="utf-8">
-    <title>动画demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="css/common.css">
-    <link rel="stylesheet" type="text/css" href="css/demo.css">
+  <meta name="keywords" content="具体的关键字">
+  <meta name="description" content="具体的页面描述">
+  <meta name="author" content="game">
+  <meta http-equiv="content-language" content="zh-CN"/>
+  <meta charset="utf-8">
+  <title>动画demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/demo.css">
 </head>
 <body>
-	<div class="index-wrapper">
+<div class="index-wrapper">
 
-        <div id="contentBox">
-          <img id="eaterIcon" src="./images/fish_right.png" alt="eaterIcon">
-          <!--<div class="partItem"></div>-->
-        </div>
-
-    <div class="shadowBox">
-      <span class="leftTime">3</span>
-    </div>
-    <div class="fixedBox">
-      <div class="part">返回</div>
-      <div class="part">再来一次</div>
-    </div>
-
+  <div id="contentBox">
+    <img id="eaterIcon" src="./images/fish_right.png" alt="eaterIcon">
+    <!--<div class="partItem"></div>-->
   </div>
-	<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
-	<script type="text/javascript" src="js/flexible.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
-	<!--<script type="text/javascript" src="js/index-ctrl.js"></script>-->
+
+  <div class="shadowBox">
+    <span class="leftTime">3</span>
+  </div>
+  <div class="fixedBox">
+    <div class="part">返回</div>
+    <div class="part">再来一次</div>
+  </div>
+
+</div>
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/flexible.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<!--<script type="text/javascript" src="js/index-ctrl.js"></script>-->
 <script type="text/javascript">
 
-  $(function(){
+  $(function () {
 
     // 斜线高度
-    console.log(Math.sqrt( Math.pow(200,2)+Math.pow(100,2) ));
+    console.log(Math.sqrt(Math.pow(200, 2) + Math.pow(100, 2)));
 
     /**
      * js控制角度
      * @param tan
      * @returns {number}
      */
-    function getTanDeg(tan) {
+    function getTanDeg (tan) {
       return Math.atan(tan) / (Math.PI / 180);
     }
 
@@ -57,7 +57,7 @@
 
     let $contentBox = $('#contentBox'); // 容器box
     let itemWidth = $contentBox.width(); // 子元素宽度
-    let itemHeight = $contentBox.height()/(point/2 - 1); // 子元素高度
+    let itemHeight = $contentBox.height() / (point / 2 - 1); // 子元素高度
 
     // 补充顶部边框，作为运动轨迹
     $contentBox.css({
@@ -65,10 +65,10 @@
     });
 
     // 添加子元素，添加子元素图片
-    for(let i = 0; i<point/2 - 1; i++){
+    for (let i = 0; i < point / 2 - 1; i++) {
       $contentBox.append('<div class="partItem"></div>');
       $('.partItem').eq(i).width(itemWidth).height(itemHeight).append('' +
-        '<div class="border" style="height: '+lineWidth+'px; background: '+lineColor+'"></div>' +
+        '<div class="border" style="height: ' + lineWidth + 'px; background: ' + lineColor + '"></div>' +
         '<img class="foodIcon foodIcon1" src="./images/lemon.png" alt="foodIcon">' +
         '<img class="foodIcon foodIcon2" src="./images/lemon.png" alt="foodIcon">'
       );
@@ -83,12 +83,11 @@
     // 子元素，添加伪类样式，作为运动轨迹
     $(`<style>.partItem:before{
       width: ${lineWidth}px;
-      height: ${Math.sqrt( Math.pow(itemWidth,2)+Math.pow(itemHeight,2) )}px;
+      height: ${Math.sqrt(Math.pow(itemWidth, 2) + Math.pow(itemHeight, 2))}px;
       background-color: ${lineColor};
-      transform: rotate(${getTanDeg(itemWidth/(itemHeight - lineWidth/2))+'deg'});
+      transform: rotate(${getTanDeg(itemWidth / (itemHeight - lineWidth / 2)) + 'deg'});
 
     }</style>`).appendTo('head');
-
 
 
     var $foodIconArr = $('.foodIcon');// 食物的图标数组
@@ -100,37 +99,38 @@
 
 
     // 再来一次
-    $('.fixedBox .part').unbind('click').bind('click', function(){
+    $('.fixedBox .part').unbind('click').bind('click', function () {
       let index = $(this).index();
-      if(index === 0){
+      if (index === 0) {
         alert('返回~');
-      }else{
+      } else {
         // 展示倒计时
         $('.shadowBox').show();
         timerFun();
         // 修改图片方向；
         $eater.attr('src', './images/fish_right.png');
         // 显示所有食物
-        for(let i = 0; i<$foodIconArr.length; i++){
+        for (let i = 0; i < $foodIconArr.length; i++) {
           $foodIconArr.eq(i).show();
         }
         // 重置捕食者位置
         $eater.css({
-          left: -eaterWidth/2,
-          top: -eaterHeight/2
+          left: -eaterWidth / 2,
+          top: -eaterHeight / 2
         });
       }
     });
 
     // 开始（进入页面即执行）
     timerFun();
-    function timerFun(){
+
+    function timerFun () {
       let leftTime = 3;
       let timer = setInterval(function () {
-        leftTime --;
-        if(leftTime > 0){
+        leftTime--;
+        if (leftTime > 0) {
           $('.shadowBox .leftTime').text(leftTime);
-        }else{
+        } else {
           clearInterval(timer);
           $('.shadowBox').hide();
           $('.shadowBox .leftTime').text(3);
@@ -142,23 +142,23 @@
     /**
      * eatingFood：开始吃食物
      */
-    function eatingFood(){
-      for(let i = 0; i<=point; i++){
+    function eatingFood () {
+      for (let i = 0; i <= point; i++) {
 
-        let left = i%2?0:itemWidth; // 距离左侧距离
-        let top = Math.ceil(i/2)*itemHeight; // 距离顶部距离
+        let left = i % 2 ? 0 : itemWidth; // 距离左侧距离
+        let top = Math.ceil(i / 2) * itemHeight; // 距离顶部距离
 
-        if(i === 0){// 隐藏第一个食物
+        if (i === 0) {// 隐藏第一个食物
           $foodIconArr.eq(0).hide();
         }
-        if(i<point - 1){ // 最后一次之前停止动画
+        if (i < point - 1) { // 最后一次之前停止动画
           $eater.animate({
-            left: left - eaterWidth/2, // 减去自身边距的一半
-            top: top  - eaterHeight/2 // 减去自身边距的一半
-          }, animatEasing, 'linear', function(){
+            left: left - eaterWidth / 2, // 减去自身边距的一半
+            top: top - eaterHeight / 2 // 减去自身边距的一半
+          }, animatEasing, 'linear', function () {
             console.log(left, top);
-            $foodIconArr.eq(i+1).hide();
-            $eater.attr('src', `./images/fish_${i%2?'right':'left'}.png`);
+            $foodIconArr.eq(i + 1).hide();
+            $eater.attr('src', `./images/fish_${i % 2 ? 'right' : 'left'}.png`);
           }).delay(animatDelay);
         }
       }
