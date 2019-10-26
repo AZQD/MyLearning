@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+   	<meta name="keywords" content="具体的关键字">
+	<meta name="description" content="具体的页面描述">
+	<meta name="author" content="game">
+	<meta http-equiv="content-language" content="zh-CN"/>
+	<meta charset="utf-8">
+    <title id="currentTitle"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="index-wrapper">
+
+        <div class="part-box part1-box" style="display: block">
+          <div class="begin-wrap">
+            <button class="begin-btn">开始</button>
+          </div>
+        </div>
+
+        <div class="part-box part2-box" style="display: none">
+          <div class="part2-warp">
+            <div class="tips-box" id="tips-box">以最快速度从1选到<span id="maxNumber"></span></div>
+            <div class="part2-middle count-box" style="display: flex">
+              <span class="count"></span>
+            </div>
+            <div class="part2-middle game-box" id="game-box" style="display: none">
+              <div class="item-ul" id="item-ul">
+                <!--<div class="item-li">
+                  <div class="item-li-num checked">1</div>
+                </div>-->
+              </div>
+            </div>
+            <div class="ctrl-box" id="ctrl-box">
+              <!--<img class="ctrl_icon" src="images/index/ctrl_icon.png" alt="ctrl_icon"/>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="part-box part3-box" style="display: none">
+          <p class="time">用时 <span class="time-num">1</span> 秒</p>
+          <div class="jump-ctrl">
+            <div class="part left">返回</div>
+            <div class="part right">再来</div>
+          </div>
+        </div>
+    </div>
+
+  </div>
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="js/flexible.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/index-ctrl.js"></script>
+</body>
+</html>

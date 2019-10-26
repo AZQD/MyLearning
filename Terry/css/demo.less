@@ -1,0 +1,48 @@
+@rem: 16rem;
+* {
+  font-family: "微软雅黑" !important;
+}
+body {
+  background-color: #fff;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+.index-wrapper{
+  height: 100vh;
+  //background: url("../images/bg_sea.png") repeat-x;
+  background-size: 100% 100%;
+  padding: 10% 15%;
+  #contentBox{
+    height: 100%;
+    background-color: pink;
+    .partItem {
+      overflow: hidden;
+      //border-top: solid 1px #000;
+      //width: 200px;
+      //height: 100px;
+      position: relative;
+      background-color: transparent;
+      &:last-child{
+        //border-bottom: solid 1px #000;
+      }
+    }
+
+    .partItem:before{
+      content: "";
+      position: absolute;
+      //width: 1px;
+      //height: (223.60679774997897)/@rem; /*斜线高度*/
+      top: 0;
+      right: 0;
+      //background-color: blue;
+      display: block;
+      //transform: rotate(63.434948822922deg); /*js控制角度*/
+      transform-origin: top;
+    }
+  }
+
+}

@@ -1,0 +1,325 @@
+
+@charset "utf-8";
+/* @base */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button{margin:0;padding:0;}
+body,button,input,select,textarea{font:14px/1.5 PingFangSC,Garamond,arial,\5b8b\4f53;}
+input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+th{text-align:inherit;}
+fieldset,img,a img{border:0;}
+abbr,acronym{border:0;font-variant:normal;}
+del{text-decoration:line-through;}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+q:before,q:after{content:'';}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+ins,a{text-decoration:none;color: #fff;}
+a:hover{text-decoration:none;}
+
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clearfix{*zoom:1;}
+.hide{display:none;}
+.fl{float:left;}
+.fr{float:right;}
+html,body{
+	height: 100%;
+	color: #757575;
+	background: #F2F2F2;
+}
+body{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	flex-direction: column;
+
+
+}
+.flex{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+}
+*{
+	-moz-box-sizing: border-box;  
+    -webkit-box-sizing: border-box; 
+    -o-box-sizing: border-box; 
+    -ms-box-sizing: border-box; 
+    box-sizing: border-box; 
+}
+/*此处设置无论页面内容多少  footer永远在底部显示*/
+.body-wrap{
+	position: relative;
+	-webkit-flex: 1 1 auto;
+	-moz-flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	-o-flex: 1 1 auto;
+	flex: 1 1 auto;
+	flex-direction: column;
+	-webkit-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+/*此处设置无论页面内容多少  footer永远在底部显示*/
+
+
+/*以上为CSSreset*/
+
+
+
+/*header start*/
+.public-header{
+	-webkit-flex: 0 0 auto;
+	-moz-flex: 0 0 auto;
+	-ms-flex: 0 0 auto;
+	-o-flex: 0 0 auto;
+	flex: 0 0 auto;
+}
+
+.public-footer{
+	-webkit-flex: 0 0 auto;
+	-moz-flex: 0 0 auto;
+	-ms-flex: 0 0 auto;
+	-o-flex: 0 0 auto;
+	flex: 0 0 auto;
+}
+.header{
+	width: 100%;
+	padding: 0.266667rem;
+	background: #333;
+	height: 1.6rem;
+	justify-content: space-between;
+	-webkit-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+
+.header .logo{
+	display: block;
+	height: 1.066667rem;
+	line-height: 1.066667rem;
+	color: #fff;
+	font-size: 0.658824rem;
+	font-weight: bold;
+}
+.header .logo img{
+	height: 100%;
+}
+
+.header .nav{
+	width:1.066667rem;
+	flex-direction: column;
+	align-content: space-around;
+	height: 100%;
+	flex-flow: row wrap;
+}
+.header .nav span{
+	width: 100%;
+	height: 0.066667rem;
+	background: #fff;
+	display: block;
+	-webkit-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+
+.sideBarAnimate{
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+
+}
+
+/*header end*/
+
+/*sideBar begin*/
+
+.kx-column-nav{
+	width: 50%;/*宽度根据项目需求调节；如需响应请使用百分比加上max-width*/
+	position: fixed;
+	top: 0;
+	right: -50%;
+	height: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	background: #20222A;
+	-webkit-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+	z-index: 100;
+}
+
+.kx-column-nav .kx-column-logo{
+	display: block;
+	width: 100%;
+	height: 1.6rem;
+	line-height: 1.6rem;
+	text-decoration: none;
+}
+
+.kx-column-nav .kx-column-logo h1{
+	text-align: center;
+	font-size: 0.64rem;
+	font-weight: bold;
+	color: #fff;
+	opacity: .8;
+	letter-spacing: 5px;
+}
+
+.kx-column-nav .kx-column-main{
+	width: 100%;
+}
+.kx-column-nav .kx-column-main > ul{
+	padding: 0;
+	margin: 0;
+}
+.kx-column-nav .kx-column-main > ul > li{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.kx-column-nav .kx-column-main > ul > li > a{
+
+	display: block;
+	padding-left: 0.666667rem;
+	color: #fff;
+	opacity: .8;
+	text-decoration: none;
+	height: 1.333333rem;
+	line-height: 1.333333rem;
+	-webkit-transition: border .6s;
+	-o-transition: border .6s;
+	transition: border .6s;
+	position: relative;
+}
+.kx-column-nav .kx-column-main > ul > li > a .kx-slide-icon{
+	width: 0.373333rem;
+	height: 0.373333rem;
+	font-size: 0.373333rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.186667rem;
+	right: 0.533333rem;
+}
+.kx-column-nav .kx-column-main > ul > li > a .fa-chevron-up{
+	display: none;
+}
+.kx-column-nav .kx-column-main > ul > li > .active .fa-chevron-up{
+	display: block;
+}
+
+.kx-column-nav .kx-column-main > ul > li > .active .fa-chevron-down{
+	display: none;
+}
+
+.kx-column-nav .kx-column-main > ul > li > a i{
+	font-size: 0.373333rem;
+	width: 0.4rem;
+	margin-right: 0.133333rem;
+}
+
+.kx-column-nav .kx-column-main > ul > li > ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	background: rgba(0,0,0,.3)
+}
+.kx-column-nav .kx-column-main > ul > li > ul{
+	display: none;
+}
+.kx-column-nav .kx-column-main > ul > li > ul li a{
+	padding-left: 1.2rem;
+	line-height: 1.2rem;
+	color: #fff;
+	opacity: .8;
+	display: block;
+	text-decoration: none;
+	-webkit-transition: all .75s;
+	-o-transition: all .75s;
+	transition: all .75s;
+}
+.kx-column-nav .kx-column-main > ul > li > ul li a:hover{
+	background: #009688;
+}
+
+/*sideBar end*/
+
+/*footer begin*/
+.footer{
+	position: relative;
+	font-size: 0.32rem;
+	width: 100%;
+	height: 0.8rem;
+	text-align: center;
+	background: #333;
+	line-height: 0.8rem;
+	color: #fff;
+	-webkit-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+/*footer end*/
+
+
+/*模板页面规则对应样式，实际开发中中请删除*/
+
+.kx-rule{
+  width: 100%;
+  margin-top: 1.066667rem;
+  padding: 0 0.533333rem
+}
+
+.kx-rule h1{
+  text-align: center;
+  font-size: 0.48rem;
+  color: #333;
+  font-family: 'Chelsea Market', Georgia, serif
+  
+}
+
+.kx-rule h2{
+  text-align: center;
+  font-size: 0.32rem;
+  color: #999;
+  font-family: 'Chelsea Market', Georgia, serif;
+  margin-top: 15px;
+}
+.kx-rule h3{
+  text-align: center;
+  font-size: 0.32rem;
+  color: #999;
+  font-family: 'Chelsea Market', Georgia, serif;
+  margin-top: 0.4rem;
+}
+.kx-rule ul{
+  width: 100%;
+  margin: 0.8rem auto;
+}
+
+.kx-rule ul li{
+  line-height: 0.666667rem;
+  font-size: 0.32rem;
+}
+
+.kx-rule ul li a{
+  color: #ff0000;
+  /*text-decoration: underline;*/
+}
+/*模板页面规则对应样式，实际开发中中请删除*/
+
+
+
+
+
+
+
+
