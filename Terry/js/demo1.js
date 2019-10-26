@@ -39,7 +39,6 @@ $(function () {
       height: ${Math.sqrt(Math.pow(itemWidth, 2) + Math.pow(itemHeight, 2))}px; /*斜线长度*/
       background-color: ${lineColor};
       transform: rotate(${getTanDeg(itemWidth / (itemHeight - lineWidth / 2)) + 'deg'});
-
     }</style>`).appendTo('head');
 
   // js控制角度，返回旋转的度数
