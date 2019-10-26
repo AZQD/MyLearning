@@ -51,7 +51,7 @@ $(function () {
   var $foodIconArr = $('.foodIcon');// 食物的图标DOM数组
   var $eater = $('#eaterIcon'); // 猎人DOM（人或者鱼）
 
-  // js控制初始化left,top,并保存，以便再次初始化；
+  // js控制捕食者初始化left,top,并保存，以便再次初始化；
   let rootFontSize = parseInt($('html').css('fontSize'));
   let eaterFontScale = 250;
   $eater.width(299 * rootFontSize / eaterFontScale);
