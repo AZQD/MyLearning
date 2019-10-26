@@ -35,6 +35,8 @@
 <script type="text/javascript">
 
   $(function () {
+    
+    let animatingFlag = false; // 动画是否在执行
 
     // 斜线高度
     console.log(Math.sqrt(Math.pow(200, 2) + Math.pow(100, 2)));
@@ -49,7 +51,7 @@
     }
 
 
-    let point = 10; // 一共10个目标点
+    let point = 8; // 一共10个目标点
     let lineColor = '#bfa'; // 线条颜色
     let lineWidth = 2; // 线条粗细
     let animatEasing = 50; // 动画速度
@@ -93,6 +95,10 @@
     var $foodIconArr = $('.foodIcon');// 食物的图标数组
     var $eater = $('#eaterIcon'); // 猎人（人或者鱼）
 
+    let rootFontSize = parseInt($('html').css('fontSize'));
+    let eaterFontScale = 250;
+    $eater.width(299*rootFontSize/eaterFontScale);
+    $eater.height(262*rootFontSize/eaterFontScale);
     let eaterWidth = $eater.width(); // 捕食者宽度
     let eaterHeight = $eater.height(); // 捕食者高度
     // js控制初始化left,top,并保存，以便再次初始化；
@@ -104,26 +110,27 @@
       if (index === 0) {
         alert('返回~');
       } else {
-        // 展示倒计时
-        $('.shadowBox').show();
-        timerFun();
-        // 修改图片方向；
-        $eater.attr('src', './images/fish_right.png');
-        // 显示所有食物
-        for (let i = 0; i < $foodIconArr.length; i++) {
-          $foodIconArr.eq(i).show();
+        if(!animatingFlag){ // 动画执行结束
+          // 展示倒计时
+          $('.shadowBox').show();
+          timerFun();
+          // 修改图片方向；
+          $eater.attr('src', './images/fish_right.png');
+          // 显示所有食物
+          for (let i = 0; i < $foodIconArr.length; i++) {
+            $foodIconArr.eq(i).show();
+          }
+          // 重置捕食者位置
+          $eater.css({
+            left: -eaterWidth / 2,
+            top: -eaterHeight / 2
+          });
         }
-        // 重置捕食者位置
-        $eater.css({
-          left: -eaterWidth / 2,
-          top: -eaterHeight / 2
-        });
       }
     });
 
     // 开始（进入页面即执行）
     timerFun();
-
     function timerFun () {
       let leftTime = 3;
       let timer = setInterval(function () {
@@ -143,7 +150,8 @@
      * eatingFood：开始吃食物
      */
     function eatingFood () {
-      for (let i = 0; i <= point; i++) {
+      animatingFlag = true;
+      for (let i = 0; i < point; i++) {
 
         let left = i % 2 ? 0 : itemWidth; // 距离左侧距离
         let top = Math.ceil(i / 2) * itemHeight; // 距离顶部距离
@@ -156,9 +164,13 @@
             left: left - eaterWidth / 2, // 减去自身边距的一半
             top: top - eaterHeight / 2 // 减去自身边距的一半
           }, animatEasing, 'linear', function () {
-            console.log(left, top);
             $foodIconArr.eq(i + 1).hide();
             $eater.attr('src', `./images/fish_${i % 2 ? 'right' : 'left'}.png`);
+            console.log(i);
+            if(i === point - 2){
+              console.log('最后一次');
+              animatingFlag = false;
+            }
           }).delay(animatDelay);
         }
       }
