@@ -19,13 +19,16 @@
           <!--<div class="partItem"></div>-->
         </div>
 
+    <div class="fixedBox">
+      <div class="part">返回</div>
+      <div class="part">再来一次</div>
     </div>
 
   </div>
 	<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="js/flexible.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
-	<script type="text/javascript" src="js/index-ctrl.js"></script>
+	<!--<script type="text/javascript" src="js/index-ctrl.js"></script>-->
 <script type="text/javascript">
 
   $(function(){
@@ -46,8 +49,8 @@
     let point = 10; // 一共10个目标点
     let lineColor = '#bfa'; // 线条颜色
     let lineWidth = 2; // 线条粗细
-    let animatEasing = 500; // 动画速度
-    let animatDelay = 200; // 动画每个阶段停留时间
+    let animatEasing = 50; // 动画速度
+    let animatDelay = 20; // 动画每个阶段停留时间
 
     let $contentBox = $('#contentBox'); // 容器box
     let itemWidth = $contentBox.width(); // 子元素宽度
@@ -90,10 +93,32 @@
 
     let eaterWidth = $eater.width(); // 捕食者宽度
     let eaterHeight = $eater.height(); // 捕食者高度
+    // js控制初始化left,top,并保存，以便再次初始化；
 
 
+    // 开始（进入页面即执行）
     $eater.unbind('click').bind('click', function(){
       eatingFood();
+    });
+
+    // 再来一次
+    $('.fixedBox .part').unbind('click').bind('click', function(){
+      let index = $(this).index();
+      if(index === 0){
+        alert('返回~');
+      }else{
+        // 修改图片方向；
+        $eater.attr('src', './images/fish_right.png');
+        // 显示所有食物
+        for(let i = 0; i<$foodIconArr.length; i++){
+          $foodIconArr.eq(i).show();
+        }
+        // 重置捕食者位置
+        $eater.css({
+          left: -eaterWidth/2,
+          top: -eaterHeight/2
+        });
+      }
     });
 
     /**

@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
   height: 100vh;
   background: url("../images/bg_sea.png") repeat-x;
   background-size: 100% 100%;
-  padding: 10% 15%;
+  padding: 16%;
 }
 .index-wrapper #contentBox {
   height: 100%;
@@ -21,10 +21,10 @@ body::-webkit-scrollbar {
 }
 .index-wrapper #contentBox #eaterIcon {
   position: absolute;
-  width: 1.16796875rem;
-  height: 1.0234375rem;
-  left: -1.75585937rem;
-  top: -0.51171875rem;
+  width: 0.99666667rem;
+  height: 0.87333333rem;
+  left: -1.49833333rem;
+  top: -0.43666667rem;
   z-index: 2;
 }
 .index-wrapper #contentBox .partItem {
@@ -39,26 +39,26 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 .index-wrapper #contentBox .partItem .foodIcon {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 0.64rem;
+  height: 0.64rem;
   position: absolute;
   z-index: 1;
 }
 .index-wrapper #contentBox .partItem .foodIcon1 {
-  left: -0.375rem;
-  top: -0.375rem;
+  left: -0.32rem;
+  top: -0.32rem;
 }
 .index-wrapper #contentBox .partItem .foodIcon2 {
-  right: -0.375rem;
-  top: -0.375rem;
+  right: -0.32rem;
+  top: -0.32rem;
 }
 .index-wrapper #contentBox .partItem .foodIcon3 {
-  left: -0.375rem;
-  bottom: -0.375rem;
+  left: -0.32rem;
+  bottom: -0.32rem;
 }
 .index-wrapper #contentBox .partItem .foodIcon4 {
-  right: -0.375rem;
-  bottom: -0.375rem;
+  right: -0.32rem;
+  bottom: -0.32rem;
 }
 .index-wrapper #contentBox .partItem:before {
   content: "";
@@ -67,4 +67,24 @@ body::-webkit-scrollbar {
   right: 0;
   display: block;
   transform-origin: top;
+}
+.index-wrapper .fixedBox {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 0.37333333rem;
+  color: #fff;
+  background-color: #121F41;
+}
+.index-wrapper .fixedBox .part {
+  flex-grow: 1;
+  margin: 0.32rem 0;
+  border-right: 0.02666667rem solid #fff;
+}
+.index-wrapper .fixedBox .part:last-child {
+  border-right: none;
 }
