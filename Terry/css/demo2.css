@@ -1,0 +1,106 @@
+* {
+  font-family: "微软雅黑" !important;
+}
+body {
+  background-color: #fff;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+body::-webkit-scrollbar {
+  width: 0;
+}
+.index-wrapper {
+  height: 100vh;
+  background: url("../images/bg_sea.png") repeat-x;
+  background-size: 100% 100%;
+  padding: 20% 20%;
+}
+.index-wrapper #contentBox {
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+.index-wrapper #contentBox #eaterIcon {
+  position: absolute;
+  z-index: 2;
+}
+.index-wrapper #contentBox .partItem {
+  position: relative;
+  background-color: transparent;
+}
+.index-wrapper #contentBox .partItem .border {
+  /*作为运动轨迹*/
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+.index-wrapper #contentBox .partItem .foodIcon {
+  width: 0.64rem;
+  height: 0.64rem;
+  position: absolute;
+  z-index: 1;
+}
+.index-wrapper #contentBox .partItem .foodIcon1 {
+  left: -0.32rem;
+  top: -0.32rem;
+}
+.index-wrapper #contentBox .partItem .foodIcon2 {
+  left: -0.32rem;
+  bottom: -0.32rem;
+}
+.index-wrapper #contentBox .partItem .foodIcon3 {
+  right: -0.32rem;
+  top: -0.32rem;
+}
+.index-wrapper #contentBox .partItem .foodIcon4 {
+  right: -0.32rem;
+  bottom: -0.32rem;
+}
+.index-wrapper #contentBox .partItem:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  transform-origin: top;
+}
+.index-wrapper .shadowBox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.index-wrapper .shadowBox .timeNum {
+  font-weight: bold;
+  color: #fff;
+  font-size: 4rem;
+  display: inline-block;
+  padding-bottom: 2.66666667rem;
+}
+.index-wrapper .fixedBox {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 0.37333333rem;
+  color: #fff;
+  background-color: #121F41;
+}
+.index-wrapper .fixedBox .part {
+  flex-grow: 1;
+  margin: 0.32rem 0;
+  border-right: 0.02666667rem solid #fff;
+}
+.index-wrapper .fixedBox .part:last-child {
+  border-right: none;
+}

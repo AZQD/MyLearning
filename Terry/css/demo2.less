@@ -1,0 +1,138 @@
+@rem: 37.5rem;
+* {
+  font-family: "微软雅黑" !important;
+}
+
+body {
+  background-color: #fff;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+@foodIconLength: 24; // 食物的图标大小
+
+.index-wrapper {
+  height: 100vh;
+  background: url("../images/bg_sea.png") repeat-x;
+  background-size: 100% 100%;
+  //padding: 10% 15%;
+  padding:  20% 20%;
+  #contentBox {
+    //-webkit-transform: scale3d(-1,1, 1) rotate(90deg);/*旋转后*/
+    height: 100%;
+    //background-color: pink;
+    position: relative;
+    display: flex;
+
+    #eaterIcon {
+      position: absolute;
+      //width: 200/@rem/8;
+      //height: 200/@rem/8;
+      //left: -899/@rem/8/2;
+      //top: -262/@rem/8/2;
+      z-index: 2;
+    }
+
+    .partItem {
+      //overflow: hidden;/*不需要*/
+      //border-top: solid 1px #000;
+      //width: 200px;
+      //height: 100px;
+      position: relative;
+      background-color: transparent;
+      &:last-child {
+        //border-bottom: solid 1px #000;
+      }
+
+      .border { /*作为运动轨迹*/
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .foodIcon {
+        //-webkit-transform: scale(1,2);/*旋转后*/
+        width: @foodIconLength/@rem;
+        height: @foodIconLength/@rem;
+        position: absolute;
+        z-index: 1;
+      }
+      .foodIcon1 {
+        left: -(@foodIconLength/2)/@rem;
+        top: -(@foodIconLength/2)/@rem;
+      }
+      .foodIcon2 {
+        left: -(@foodIconLength/2)/@rem;
+        bottom: -(@foodIconLength/2)/@rem;
+      }
+      .foodIcon3 {
+        right: -(@foodIconLength/2)/@rem;
+        top: -(@foodIconLength/2)/@rem;
+      }
+      .foodIcon4 {
+        right: -(@foodIconLength/2)/@rem;
+        bottom: -(@foodIconLength/2)/@rem;
+      }
+    }
+
+    .partItem:before {
+      content: "";
+      position: absolute;
+      //width: 1px;
+      //height: (223.60679774997897)/@rem; /*斜线高度*/
+      top: 0;
+      right: 0;
+      //background-color: blue;
+      display: block;
+      //transform: rotate(63.434948822922deg); /*js控制角度*/
+      transform-origin: top;
+    }
+  }
+
+  .shadowBox {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background-color: RGBA(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .timeNum {
+      font-weight: bold;
+      color: #fff;
+      font-size: 4rem;
+      display: inline-block;
+      padding-bottom: 100/@rem;
+    }
+  }
+
+  .fixedBox {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 14/@rem;
+    color: #fff;
+    background-color: #121F41;
+    .part {
+      flex-grow: 1;
+      margin: 12/@rem 0;
+      border-right: 1/@rem solid #fff;
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+}
