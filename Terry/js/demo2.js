@@ -104,9 +104,9 @@ $(function () {
           top: top - eaterHeight / 2 // 减去自身边距的一半
         }, animatEasing, 'linear', function () {
           $foodIconArr.eq(i + 1).hide();
-          console.log(i);
+          // console.log(i);
           if (i === point - 2) {
-            console.log('最后一次');
+            // console.log('最后一次');
             animatingFlag = false;
           }
         }).delay(animatDelay);

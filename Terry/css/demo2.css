@@ -82,7 +82,7 @@ body::-webkit-scrollbar {
   color: #fff;
   font-size: 4rem;
   display: inline-block;
-  padding-bottom: 2.66666667rem;
+  padding-bottom: 1.33333333rem;
 }
 .index-wrapper .fixedBox {
   position: fixed;
