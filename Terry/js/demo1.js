@@ -61,8 +61,32 @@ $(function () {
   let eaterHeight = $eater.height(); // 捕食者高度
   let windowWidth = $(window).width(); // 视口宽度
   let windowHeight = $(window).height(); // 视口高度
-  let eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4; // 捕食者初始化left
+  let eaterInitLeft;
+  let rate = 3; // 旋转后的缩放参数（自定义）
+  let contentBoxCenterTop = $contentBox.offset().top+itemHeight*(point/2-1)/2; // 中心点距顶部距离
+  let contentBoxCenterLeft = $contentBox.offset().left+itemWidth/2; // 中心点距左边距离
+  console.log('中心点位置：', contentBoxCenterTop, contentBoxCenterLeft);
+  console.log('宽度的一半：',itemWidth*itemHeight/itemWidth*rate/2);
+  let viewTop = (contentBoxCenterTop - itemWidth*itemHeight/itemWidth*rate/2)/2;
+  console.log('顶部留白的一半：', viewTop);
+  console.log('捕食者的一半：', -eaterWidth/2);
+  viewTop = -eaterWidth/2 - viewTop;
+  console.log('视觉上应该移动距离：', viewTop);
+  viewTop = viewTop/(itemHeight/itemWidth*rate);
+  if(animateType){
+    console.log('x轴伸缩比例', itemWidth/itemHeight/rate);
+    console.log('y轴伸缩比例', itemHeight/itemWidth*rate);
+    if(windowWidth>640){
+      eaterInitLeft = viewTop;
+    }else{
+      eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4;
+    }
+    eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4;
+  }else{
+    eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4; // 横向捕食者初始化left
+  }
   let eaterInitTop = -eaterHeight / 2; // 捕食者初始化top
+  console.log('最终值：', eaterInitLeft);
   $eater.css({
     left: eaterInitLeft,
     top: eaterInitTop
@@ -73,7 +97,6 @@ $(function () {
     $('.index-wrapper').css({
       // padding: '20% 20% 10%'
     });
-    let rate = 3;
     $contentBox.css({
       transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1) rotate(90deg)`
     });
@@ -95,6 +118,7 @@ $(function () {
   let initLeftTime = 3;
   $('.shadowBox .timeNum').text(initLeftTime);
   timerFun();
+  // $('.shadowBox').hide();
 
   function timerFun () {
     let leftTime = 3;
