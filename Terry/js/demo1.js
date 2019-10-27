@@ -5,7 +5,7 @@ $(function () {
   let lineColor = '#bfa'; // 线条颜色
   let lineWidth = 2; // 线条粗细
   let animatEasing = 500; // 动画速度
-  let animatDelay = 20; // 动画每个阶段停留时间
+  let animatDelay = 200; // 动画每个阶段停留时间
   let initLeftTime = 3;// 倒计时开始数字（进入页面即执行）
   let eaterIconLeft = './images/fish_left.png'; // 捕食者icon1
   let eaterIconRight = './images/fish_right.png'; // 捕食者icon2

@@ -4,8 +4,8 @@ $(function () {
   let point = 10; // 一共10个目标点
   let lineColor = '#bfa'; // 线条颜色
   let lineWidth = 2; // 线条粗细
-  let animatEasing = 50; // 动画速度
-  let animatDelay = 20; // 动画每个阶段停留时间
+  let animatEasing = 500; // 动画速度
+  let animatDelay = 200; // 动画每个阶段停留时间
   let initLeftTime = 3;// 倒计时开始数字（进入页面即执行）
   let eaterIcon = './images/boy_head_001.png'; // 捕食者icon
   let foodIcon = './images/orange.png'; // 食物icon
@@ -69,7 +69,6 @@ $(function () {
 
   $('.shadowBox .timeNum').text(initLeftTime);
   timerFun();
-
   // $('.shadowBox').hide();
 
   function timerFun () {
