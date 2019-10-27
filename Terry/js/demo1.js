@@ -99,13 +99,10 @@ $(function () {
     $contentBox.css({
       transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1) rotate(90deg)`
     });
-    $eater.css({
-      transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1)`
+    $eater.attr('src',  './images/boy_head_001.png').css({
+      transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1) rotate(90deg)`
     });
     for(let i = 0; i<$foodIconArr.length; i++){
-      $eater.attr('src',  './images/boy_head_001.png').css({
-        transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1) rotate(90deg)`
-      });
       $foodIconArr.eq(i).css({
         transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1)`
       }).attr('src', './images/orange.png');
