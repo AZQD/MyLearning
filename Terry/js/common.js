@@ -8,5 +8,5 @@ function getParamByUrl(paramKey){
             return  param[1];
         }
     }
-    return "false";
+    return "";
 }

@@ -1,12 +1,14 @@
 $(function () {
+  let animateType = getParamByUrl('type'); // 0：横向动画；默认；1：竖向动画；
+  console.log(`${animateType?'竖':'横'}向动画`);
 
   let animatingFlag = false; // 动画是否在执行
 
   let point = 10; // 一共10个目标点
   let lineColor = '#bfa'; // 线条颜色
   let lineWidth = 2; // 线条粗细
-  let animatEasing = 500; // 动画速度
-  let animatDelay = 200; // 动画每个阶段停留时间
+  let animatEasing = 50; // 动画速度
+  let animatDelay = 20; // 动画每个阶段停留时间
 
   let $contentBox = $('#contentBox'); // 容器box
   let itemWidth = $contentBox.width(); // 子元素宽度
@@ -67,6 +69,28 @@ $(function () {
   });
 
 
+  if(animateType){
+    $('.index-wrapper').css({
+      // padding: '20% 20% 10%'
+    });
+    let rate = 3;
+    $contentBox.css({
+      transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1) rotate(90deg)`
+    });
+    $eater.css({
+      transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1)`
+    });
+    for(let i = 0; i<$foodIconArr.length; i++){
+      $eater.attr('src',  './images/boy_head_001.png').css({
+        transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1) rotate(90deg)`
+      });
+      $foodIconArr.eq(i).css({
+        transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1)`
+      }).attr('src', './images/orange.png');
+    }
+  }
+
+
   // 开始（进入页面即执行）
   let initLeftTime = 3;
   $('.shadowBox .timeNum').text(initLeftTime);
@@ -105,7 +129,9 @@ $(function () {
           top: top - eaterHeight / 2 // 减去自身边距的一半
         }, animatEasing, 'linear', function () {
           $foodIconArr.eq(i + 1).hide();
-          $eater.attr('src', `./images/fish_${i % 2 ? 'right' : 'left'}.png`);
+          if(!animateType){ // 横向动画才更换图片
+            $eater.attr('src', `./images/fish_${i % 2 ? 'right' : 'left'}.png`);
+          }
           console.log(i);
           if (i === point - 2) {
             console.log('最后一次');
@@ -128,7 +154,9 @@ $(function () {
         $('.shadowBox').show();
         timerFun();
         // 修改图片方向；
-        $eater.attr('src', './images/fish_right.png');
+        if(!animateType){ // 横向动画才更换图片
+          $eater.attr('src', './images/fish_right.png');
+        }
         // 显示所有食物
         for (let i = 0; i < $foodIconArr.length; i++) {
           $foodIconArr.eq(i).show();
