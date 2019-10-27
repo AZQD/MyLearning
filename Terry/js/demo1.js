@@ -61,7 +61,7 @@ $(function () {
   let eaterHeight = $eater.height(); // 捕食者高度
   let windowWidth = $(window).width(); // 视口宽度
   let windowHeight = $(window).height(); // 视口高度
-  let eaterInitLeft = -eaterWidth - (windowWidth - itemWidth) / 2 * 0.2; // 捕食者初始化left
+  let eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4; // 捕食者初始化left
   let eaterInitTop = -eaterHeight / 2; // 捕食者初始化top
   $eater.css({
     left: eaterInitLeft,
