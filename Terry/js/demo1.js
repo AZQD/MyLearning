@@ -4,7 +4,7 @@ $(function () {
 
   let animatingFlag = false; // 动画是否在执行
 
-  let point = 10; // 一共10个目标点
+  let point = 8; // 一共10个目标点
   let lineColor = '#bfa'; // 线条颜色
   let lineWidth = 2; // 线条粗细
   let animatEasing = 50; // 动画速度
@@ -81,7 +81,6 @@ $(function () {
     }else{
       eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4;
     }
-    eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4;
   }else{
     eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4; // 横向捕食者初始化left
   }
