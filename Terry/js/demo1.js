@@ -1,15 +1,18 @@
 $(function () {
-  let animateType = getParamByUrl('type'); // 0：横向动画；默认；1：竖向动画；
-  console.log(`${animateType?'竖':'横'}向动画`);
 
-  let animatingFlag = false; // 动画是否在执行
-
-  let point = 8; // 一共10个目标点
+  //自定义参数
+  let point = 10; // 一共10个目标点
   let lineColor = '#bfa'; // 线条颜色
   let lineWidth = 2; // 线条粗细
-  let animatEasing = 50; // 动画速度
+  let animatEasing = 500; // 动画速度
   let animatDelay = 20; // 动画每个阶段停留时间
+  let initLeftTime = 3;// 倒计时开始数字（进入页面即执行）
+  let eaterIconLeft = './images/fish_left.png'; // 捕食者icon1
+  let eaterIconRight = './images/fish_right.png'; // 捕食者icon2
+  let foodIcon = './images/lemon.png'; // 食物icon
 
+  // 业务参数
+  let animatingFlag = false; // 动画是否在执行
   let $contentBox = $('#contentBox'); // 容器box
   let itemWidth = $contentBox.width(); // 子元素宽度
   let itemHeight = $contentBox.height() / (point / 2 - 1); // 子元素高度
@@ -24,15 +27,15 @@ $(function () {
     $contentBox.append('<div class="partItem"></div>');
     $('.partItem').eq(i).width(itemWidth).height(itemHeight).append('' +
       '<div class="border" style="height: ' + lineWidth + 'px; background: ' + lineColor + '"></div>' +
-      '<img class="foodIcon foodIcon1" src="./images/lemon.png" alt="foodIcon">' +
-      '<img class="foodIcon foodIcon2" src="./images/lemon.png" alt="foodIcon">'
+      '<img class="foodIcon foodIcon1" src='+foodIcon+' alt="foodIcon">' +
+      '<img class="foodIcon foodIcon2" src='+foodIcon+' alt="foodIcon">'
     );
   }
 
   // 最后一个元素添加子元素图片
   $('.partItem:last-child').append('' +
-    '<img class="foodIcon foodIcon3" src="./images/lemon.png" alt="foodIcon">' +
-    '<img class="foodIcon foodIcon4" src="./images/lemon.png" alt="foodIcon">'
+    '<img class="foodIcon foodIcon3" src='+foodIcon+' alt="foodIcon">' +
+    '<img class="foodIcon foodIcon4" src='+foodIcon+' alt="foodIcon">'
   );
 
   // 子元素，添加伪类样式，作为运动轨迹
@@ -43,14 +46,9 @@ $(function () {
       transform: rotate(${getTanDeg(itemWidth / (itemHeight - lineWidth / 2)) + 'deg'});
     }</style>`).appendTo('head');
 
-  // js控制角度，返回旋转的度数
-  function getTanDeg (tan) {
-    return Math.atan(tan) / (Math.PI / 180);
-  }
-
 
   var $foodIconArr = $('.foodIcon');// 食物的图标DOM数组
-  var $eater = $('#eaterIcon'); // 猎人DOM（人或者鱼）
+  var $eater = $('#eaterIcon').attr('src', eaterIconRight); // 猎人DOM（人或者鱼）
 
   // js控制捕食者初始化left,top,并保存，以便再次初始化；
   let rootFontSize = parseInt($('html').css('fontSize'));
@@ -61,57 +59,14 @@ $(function () {
   let eaterHeight = $eater.height(); // 捕食者高度
   let windowWidth = $(window).width(); // 视口宽度
   let windowHeight = $(window).height(); // 视口高度
-  let eaterInitLeft;
-  let rate = 3; // 旋转后的缩放参数（自定义）
-  let contentBoxCenterTop = $contentBox.offset().top+itemHeight*(point/2-1)/2; // 中心点距顶部距离
-  let contentBoxCenterLeft = $contentBox.offset().left+itemWidth/2; // 中心点距左边距离
-  console.log('中心点位置：', contentBoxCenterTop, contentBoxCenterLeft);
-  console.log('宽度的一半：',itemWidth*itemHeight/itemWidth*rate/2);
-  let viewTop = (contentBoxCenterTop - itemWidth*itemHeight/itemWidth*rate/2)/2;
-  console.log('顶部留白的一半：', viewTop);
-  console.log('捕食者的一半：', -eaterWidth/2);
-  viewTop = -eaterWidth/2 - viewTop;
-  console.log('视觉上应该移动距离：', viewTop);
-  viewTop = viewTop/(itemHeight/itemWidth*rate);
-  if(animateType){
-    console.log('x轴伸缩比例', itemWidth/itemHeight/rate);
-    console.log('y轴伸缩比例', itemHeight/itemWidth*rate);
-    if(windowWidth>640){
-      eaterInitLeft = viewTop;
-    }else{
-      eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4;
-    }
-  }else{
-    eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4; // 横向捕食者初始化left
-  }
+  let eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4; // 横向捕食者初始化left
   let eaterInitTop = -eaterHeight / 2; // 捕食者初始化top
-  console.log('最终值：', eaterInitLeft);
   $eater.css({
     left: eaterInitLeft,
     top: eaterInitTop
   });
 
 
-  if(animateType){
-    $('.index-wrapper').css({
-      // padding: '20% 20% 10%'
-    });
-    $contentBox.css({
-      transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1) rotate(90deg)`
-    });
-    $eater.attr('src',  './images/boy_head_001.png').css({
-      transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1) rotate(90deg)`
-    });
-    for(let i = 0; i<$foodIconArr.length; i++){
-      $foodIconArr.eq(i).css({
-        transform: `scale3d(-${itemWidth/itemHeight/rate},${itemHeight/itemWidth*rate}, 1)`
-      }).attr('src', './images/orange.png');
-    }
-  }
-
-
-  // 开始（进入页面即执行）
-  let initLeftTime = 3;
   $('.shadowBox .timeNum').text(initLeftTime);
   timerFun();
   // $('.shadowBox').hide();
@@ -149,9 +104,7 @@ $(function () {
           top: top - eaterHeight / 2 // 减去自身边距的一半
         }, animatEasing, 'linear', function () {
           $foodIconArr.eq(i + 1).hide();
-          if(!animateType){ // 横向动画才更换图片
-            $eater.attr('src', `./images/fish_${i % 2 ? 'right' : 'left'}.png`);
-          }
+          $eater.attr('src', `${i % 2 ? eaterIconRight : eaterIconLeft}`); // 更换图片
           console.log(i);
           if (i === point - 2) {
             console.log('最后一次');
@@ -173,10 +126,7 @@ $(function () {
         // 展示倒计时
         $('.shadowBox').show();
         timerFun();
-        // 修改图片方向；
-        if(!animateType){ // 横向动画才更换图片
-          $eater.attr('src', './images/fish_right.png');
-        }
+        $eater.attr('src', eaterIconRight); // 更换图片
         // 显示所有食物
         for (let i = 0; i < $foodIconArr.length; i++) {
           $foodIconArr.eq(i).show();
