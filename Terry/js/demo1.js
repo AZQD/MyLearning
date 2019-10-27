@@ -59,8 +59,8 @@ $(function () {
 
   // js控制捕食者初始化left,top,并保存，以便再次初始化；
   let rootFontSize = parseInt($('html').css('fontSize'));
-  $eater.width(rootFontSize * eaterFontScale/10);
-  $eater.height(rootFontSize * eaterFontScale/10);
+  $eater.width(rootFontSize * eaterFontScale / 10);
+  $eater.height(rootFontSize * eaterFontScale / 10);
   let eaterWidth = $eater.width(); // 捕食者宽度
   let eaterHeight = $eater.height(); // 捕食者高度
   let windowWidth = $(window).width(); // 视口宽度
