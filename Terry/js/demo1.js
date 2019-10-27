@@ -27,15 +27,15 @@ $(function () {
     $contentBox.append('<div class="partItem"></div>');
     $('.partItem').eq(i).width(itemWidth).height(itemHeight).append('' +
       '<div class="border" style="height: ' + lineWidth + 'px; background: ' + lineColor + '"></div>' +
-      '<img class="foodIcon foodIcon1" src='+foodIcon+' alt="foodIcon">' +
-      '<img class="foodIcon foodIcon2" src='+foodIcon+' alt="foodIcon">'
+      '<img class="foodIcon foodIcon1" src=' + foodIcon + ' alt="foodIcon">' +
+      '<img class="foodIcon foodIcon2" src=' + foodIcon + ' alt="foodIcon">'
     );
   }
 
   // 最后一个元素添加子元素图片
   $('.partItem:last-child').append('' +
-    '<img class="foodIcon foodIcon3" src='+foodIcon+' alt="foodIcon">' +
-    '<img class="foodIcon foodIcon4" src='+foodIcon+' alt="foodIcon">'
+    '<img class="foodIcon foodIcon3" src=' + foodIcon + ' alt="foodIcon">' +
+    '<img class="foodIcon foodIcon4" src=' + foodIcon + ' alt="foodIcon">'
   );
 
   // 子元素，添加伪类样式，作为运动轨迹
@@ -59,7 +59,7 @@ $(function () {
   let eaterHeight = $eater.height(); // 捕食者高度
   let windowWidth = $(window).width(); // 视口宽度
   let windowHeight = $(window).height(); // 视口高度
-  let eaterInitLeft = -eaterWidth/2 - (windowWidth - itemWidth) / 4; // 横向捕食者初始化left
+  let eaterInitLeft = -eaterWidth / 2 - (windowWidth - itemWidth) / 4; // 横向捕食者初始化left
   let eaterInitTop = -eaterHeight / 2; // 捕食者初始化top
   $eater.css({
     left: eaterInitLeft,
@@ -69,6 +69,7 @@ $(function () {
 
   $('.shadowBox .timeNum').text(initLeftTime);
   timerFun();
+
   // $('.shadowBox').hide();
 
   function timerFun () {

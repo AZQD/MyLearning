@@ -69,6 +69,7 @@ $(function () {
 
   $('.shadowBox .timeNum').text(initLeftTime);
   timerFun();
+
   // $('.shadowBox').hide();
 
   function timerFun () {
