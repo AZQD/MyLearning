@@ -1,6 +1,7 @@
 $(function () {
 
   //自定义参数
+  let wrapperPadding = '10% 20% 25% 20%'; // 上，右，下，左；（左右建议设置参数相同）
   let point = 10; // 一共10个目标点
   let lineColor = '#bfa'; // 线条颜色
   let lineWidth = 2; // 线条粗细
@@ -10,9 +11,15 @@ $(function () {
   let eaterIconLeft = './images/fish_left.png'; // 捕食者icon1
   let eaterIconRight = './images/fish_right.png'; // 捕食者icon2
   let foodIcon = './images/lemon.png'; // 食物icon
+  let eaterFontScale = 12; // 捕食者大小比例参数
 
   // 业务参数
   let animatingFlag = false; // 动画是否在执行
+
+  // 容器间距
+  $('.index-wrapper').css({
+    padding: wrapperPadding
+  });
   let $contentBox = $('#contentBox'); // 容器box
   let itemWidth = $contentBox.width(); // 子元素宽度
   let itemHeight = $contentBox.height() / (point / 2 - 1); // 子元素高度
@@ -52,9 +59,8 @@ $(function () {
 
   // js控制捕食者初始化left,top,并保存，以便再次初始化；
   let rootFontSize = parseInt($('html').css('fontSize'));
-  let eaterFontScale = 160;
-  $eater.width(200 * rootFontSize / eaterFontScale);
-  $eater.height(200 * rootFontSize / eaterFontScale);
+  $eater.width(rootFontSize * eaterFontScale/10);
+  $eater.height(rootFontSize * eaterFontScale/10);
   let eaterWidth = $eater.width(); // 捕食者宽度
   let eaterHeight = $eater.height(); // 捕食者高度
   let windowWidth = $(window).width(); // 视口宽度
