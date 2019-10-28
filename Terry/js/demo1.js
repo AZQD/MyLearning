@@ -141,9 +141,9 @@ $(function () {
         }, animatEasing, 'linear', function () {
           $foodIconArr.eq(i + 1).hide();
           $eater.attr('src', `${i % 2 ? eaterIconRight : eaterIconLeft}`); // 更换图片
-          console.log(i);
+          // console.log(i);
           if (i === point - 2) {
-            console.log('最后一次');
+            // console.log('最后一次');
             animatingFlag = false;
           }
         }).delay(animatDelay);
