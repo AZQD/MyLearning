@@ -34,26 +34,8 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 .index-wrapper #contentBox .partItem .foodIcon {
-  width: 0.64rem;
-  height: 0.64rem;
   position: absolute;
   z-index: 1;
-}
-.index-wrapper #contentBox .partItem .foodIcon1 {
-  left: -0.32rem;
-  top: -0.32rem;
-}
-.index-wrapper #contentBox .partItem .foodIcon2 {
-  right: -0.32rem;
-  top: -0.32rem;
-}
-.index-wrapper #contentBox .partItem .foodIcon3 {
-  left: -0.32rem;
-  bottom: -0.32rem;
-}
-.index-wrapper #contentBox .partItem .foodIcon4 {
-  right: -0.32rem;
-  bottom: -0.32rem;
 }
 .index-wrapper #contentBox .partItem:before {
   content: "";

@@ -11,6 +11,7 @@ $(function () {
   let eaterIcon = './images/boy_head_001.png'; // 捕食者icon
   let foodIcon = './images/orange.png'; // 食物icon
   let eaterFontScale = 12; // 捕食者大小比例参数
+  let foodFontScale = 10; // 食物大小比例参数
 
   // 业务参数
   let animatingFlag = false; // 动画是否在执行
@@ -62,6 +63,34 @@ $(function () {
   let rootFontSize = parseInt($('html').css('fontSize'));
   $eater.width(rootFontSize * eaterFontScale / 10);
   $eater.height(rootFontSize * eaterFontScale / 10);
+  for(let i = 0; i<$('.partItem').length; i++){
+    let foodIconArr = $('.partItem').eq(i).children('.foodIcon');
+    let foodSize = rootFontSize * foodFontScale / 10;
+    for(let j = 0; j<foodIconArr.length; j++){
+      foodIconArr.eq(j).width(foodSize).height(foodSize);
+      if(j === 0){
+        foodIconArr.eq(j).css({
+          left: -foodSize/2,
+          top: -foodSize/2,
+        });
+      }else if(j === 1){
+        foodIconArr.eq(j).css({
+          left: -foodSize/2,
+          bottom: -foodSize/2,
+        });
+      }else if(j === 2){
+        foodIconArr.eq(j).css({
+          right: -foodSize/2,
+          top: -foodSize/2,
+        });
+      }else if(j === 3){
+        foodIconArr.eq(j).css({
+          right: -foodSize/2,
+          bottom: -foodSize/2,
+        });
+      }
+    }
+  }
   let eaterWidth = $eater.width(); // 捕食者宽度
   let eaterHeight = $eater.height(); // 捕食者高度
   let windowWidth = $(window).width(); // 视口宽度
