@@ -11,6 +11,10 @@ $(function () {
   let eaterIconLeft = './images/fish_left.png'; // 捕食者icon1
   let eaterIconRight = './images/fish_right.png'; // 捕食者icon2
   let foodIcon = './images/lemon.png'; // 食物icon
+    // 折线运动轨迹DEMO
+    // let eaterIconLeft = './images/left_icon.png'; // 捕食者icon1
+    // let eaterIconRight = './images/right_icon.png'; // 捕食者icon2
+    // let foodIcon = './images/target_icon.png'; // 食物icon
   let eaterFontScale = 12; // 捕食者大小比例参数
   let foodFontScale = 10; // 食物大小比例参数
 
